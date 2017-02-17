@@ -1,0 +1,91 @@
+a846a90a70de75d568deb5d16691e849528607cf 38 38 3
+author lambdalisue
+author-mail <lambdalisue@hashnote.net>
+author-time 1486034200
+author-tz +0900
+committer lambdalisue
+committer-mail <lambdalisue@hashnote.net>
+committer-time 1486034200
+committer-tz +0900
+summary Update readme
+previous d3e7875fc0f6e754f93b853be3ca515b50de4efd README.md
+filename README.md
+a846a90a70de75d568deb5d16691e849528607cf 47 47 1
+filename README.md
+a846a90a70de75d568deb5d16691e849528607cf 61 61 1
+filename README.md
+a846a90a70de75d568deb5d16691e849528607cf 78 78 6
+filename README.md
+8a194fb2cde0ffdc8be1562ec3d3a2cbf1ab9181 25 25 1
+author lambdalisue
+author-mail <lambdalisue@hashnote.net>
+author-time 1485192253
+author-tz +0900
+committer lambdalisue
+committer-mail <lambdalisue@hashnote.net>
+committer-time 1485192253
+committer-tz +0900
+summary Update readme
+previous f22c6d998f8db9534739f908ebb50ab70c676634 README.md
+filename README.md
+8a194fb2cde0ffdc8be1562ec3d3a2cbf1ab9181 62 66 12
+filename README.md
+8433841a517877d19c02da3ee38d1f81d910b86c 60 64 2
+author lambdalisue
+author-mail <lambdalisue@hashnote.net>
+author-time 1485145644
+author-tz +0900
+committer lambdalisue
+committer-mail <lambdalisue@hashnote.net>
+committer-time 1485145644
+committer-tz +0900
+summary Update README
+previous e90d1de5a675e7815b84412e75d9c66f2230ac82 README.md
+filename README.md
+7e8e32981b000aca30afbf60fd73e9998b56461c 13 13 12
+author lambdalisue
+author-mail <lambdalisue@hashnote.net>
+author-time 1485128627
+author-tz +0900
+committer lambdalisue
+committer-mail <lambdalisue@hashnote.net>
+committer-time 1485128627
+committer-tz +0900
+summary Update README
+previous 35b94c7dd5a295bbc40b53007b3953472157dfe5 README.md
+filename README.md
+7e8e32981b000aca30afbf60fd73e9998b56461c 26 26 12
+filename README.md
+7e8e32981b000aca30afbf60fd73e9998b56461c 38 41 6
+filename README.md
+7e8e32981b000aca30afbf60fd73e9998b56461c 45 48 13
+filename README.md
+7e8e32981b000aca30afbf60fd73e9998b56461c 58 62 2
+filename README.md
+7e8e32981b000aca30afbf60fd73e9998b56461c 63 84 19
+filename README.md
+5a9215ae7ece49f94555a628cae119efad216103 9 9 1
+author lambdalisue
+author-mail <lambdalisue@hashnote.net>
+author-time 1484667836
+author-tz +0900
+committer lambdalisue
+committer-mail <lambdalisue@hashnote.net>
+committer-time 1484667836
+committer-tz +0900
+summary Add LICENSE.md and fix link, remove License sect
+previous a93ba471f3797dbdff8932d2d49e4da51fa7c088 README.md
+filename README.md
+95ba91df29321c81eb310032ed8bf3a871b61177 1 1 8
+author ci
+author-mail <ci@example.com>
+author-time 1483196634
+author-tz +0900
+committer ci
+committer-mail <ci@example.com>
+committer-time 1483196634
+committer-tz +0900
+summary Add README
+filename README.md
+95ba91df29321c81eb310032ed8bf3a871b61177 10 10 3
+filename README.md

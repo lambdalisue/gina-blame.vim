@@ -1,0 +1,153 @@
+Describe gina#command#blame#parser
+  Before all
+    let Path = vital#gina#import('System.Filepath')
+    let Sample = readfile(Path.realpath('test/_static/blame.txt'))
+  End
+
+  It parses blame content and return a blame object
+    let parser = gina#command#blame#parser#new()
+    for record in Sample
+      call parser.parse_record(record)
+    endfor
+    call parser.finalize()
+
+    Assert Equals(parser.revisions, {
+          \ '5a9215ae7ece49f94555a628cae119efad216103': {
+          \   'committer_mail': '<lambdalisue@hashnote.net>',
+          \   'summary': 'Add LICENSE.md and fix link, remove License sect',
+          \   'committer': 'lambdalisue',
+          \   'lnum_ori': 9,
+          \   'author_time': '1484667836',
+          \   'revision': '5a9215ae7ece49f94555a628cae119efad216103',
+          \   'nlines': 1,
+          \   'committer_time': '1484667836',
+          \   'author': 'lambdalisue',
+          \   'lnum_fin': 9,
+          \   'filename': 'README.md',
+          \   'previous': 'a93ba471f3797dbdff8932d2d49e4da51fa7c088 README.md',
+          \   'committer_tz': '+0900',
+          \   'author_mail': '<lambdalisue@hashnote.net>',
+          \   'author_tz': '+0900'
+          \ },
+          \ '7e8e32981b000aca30afbf60fd73e9998b56461c': {
+          \   'committer_mail': '<lambdalisue@hashnote.net>',
+          \   'summary': 'Update README',
+          \   'committer': 'lambdalisue',
+          \   'lnum_ori': 13,
+          \   'author_time': '1485128627',
+          \   'revision': '7e8e32981b000aca30afbf60fd73e9998b56461c',
+          \   'nlines': 12,
+          \   'committer_time': '1485128627',
+          \   'author': 'lambdalisue',
+          \   'lnum_fin': 13,
+          \   'filename': 'README.md',
+          \   'previous': '35b94c7dd5a295bbc40b53007b3953472157dfe5 README.md',
+          \   'committer_tz': '+0900',
+          \   'author_mail': '<lambdalisue@hashnote.net>',
+          \   'author_tz': '+0900'
+          \ },
+          \ '8433841a517877d19c02da3ee38d1f81d910b86c': {
+          \   'committer_mail': '<lambdalisue@hashnote.net>',
+          \   'summary': 'Update README',
+          \   'committer': 'lambdalisue',
+          \   'lnum_ori': 60,
+          \   'author_time': '1485145644',
+          \   'revision': '8433841a517877d19c02da3ee38d1f81d910b86c',
+          \   'nlines': 2,
+          \   'committer_time': '1485145644',
+          \   'author': 'lambdalisue',
+          \   'lnum_fin': 64,
+          \   'filename': 'README.md',
+          \   'previous': 'e90d1de5a675e7815b84412e75d9c66f2230ac82 README.md',
+          \   'committer_tz': '+0900',
+          \   'author_mail': '<lambdalisue@hashnote.net>',
+          \   'author_tz': '+0900'
+          \ },
+          \ 'a846a90a70de75d568deb5d16691e849528607cf': {
+          \   'committer_mail': '<lambdalisue@hashnote.net>',
+          \   'summary': 'Update readme',
+          \   'committer': 'lambdalisue',
+          \   'lnum_ori': 38,
+          \   'author_time': '1486034200',
+          \   'revision': 'a846a90a70de75d568deb5d16691e849528607cf',
+          \   'nlines': 3,
+          \   'committer_time': '1486034200',
+          \   'author': 'lambdalisue',
+          \   'lnum_fin': 38,
+          \   'filename': 'README.md',
+          \   'previous': 'd3e7875fc0f6e754f93b853be3ca515b50de4efd README.md',
+          \   'committer_tz': '+0900',
+          \   'author_mail': '<lambdalisue@hashnote.net>',
+          \   'author_tz': '+0900'
+          \ },
+          \ '8a194fb2cde0ffdc8be1562ec3d3a2cbf1ab9181': {
+          \   'committer_mail': '<lambdalisue@hashnote.net>',
+          \   'summary': 'Update readme',
+          \   'committer': 'lambdalisue',
+          \   'lnum_ori': 25,
+          \   'author_time': '1485192253',
+          \   'revision': '8a194fb2cde0ffdc8be1562ec3d3a2cbf1ab9181',
+          \   'nlines': 1,
+          \   'committer_time': '1485192253',
+          \   'author': 'lambdalisue',
+          \   'lnum_fin': 25,
+          \   'filename': 'README.md',
+          \   'previous': 'f22c6d998f8db9534739f908ebb50ab70c676634 README.md',
+          \   'committer_tz': '+0900',
+          \   'author_mail': '<lambdalisue@hashnote.net>',
+          \   'author_tz': '+0900'
+          \ },
+          \ '95ba91df29321c81eb310032ed8bf3a871b61177': {
+          \   'committer_tz': '+0900',
+          \   'nlines': 8,
+          \   'committer_mail': '<ci@example.com>',
+          \   'author': 'ci',
+          \   'lnum_fin': 1,
+          \   'filename': 'README.md',
+          \   'summary': 'Add README',
+          \   'author_time': '1483196634',
+          \   'committer': 'ci',
+          \   'author_mail': '<ci@example.com>',
+          \   'committer_time': '1483196634',
+          \   'author_tz': '+0900',
+          \   'lnum_ori': 1,
+          \   'revision': '95ba91df29321c81eb310032ed8bf3a871b61177'
+          \ }
+          \})
+
+    Assert Equals(parser.chunks, [
+        \ {'index': 0, 'lnum_fin': 1, 'filename': 'README.md', 'nlinms': 8, 'lnum_ori': 1,
+        \ 'revision': '95ba91df29321c81eb310032ed8bf3a871b61177'},
+        \ {'index': 1, 'lnum_fin': 9, 'filename': 'README.md', 'nlinms': 1, 'lnum_ori': 9,
+        \ 'revision': '5a9215ae7ece49f94555a628cae119efad216103'},
+        \ {'nlines': 3, 'lnum_fin': 10, 'filename': 'README.md', 'index': 2, 'lnum_ori': 10,
+        \ 'revision': '95ba91df29321c81eb310032ed8bf3a871b61177'},
+        \ {'index': 3, 'lnum_fin': 13, 'filename': 'README.md', 'nlinms': 12, 'lnum_ori': 13,
+        \ 'revision': '7e8e32981b000aca30afbf60fd73e9998b56461c'},
+        \ {'index': 4, 'lnum_fin': 25, 'filename': 'README.md', 'nlinms': 1, 'lnum_ori': 25,
+        \ 'revision': '8a194fb2cde0ffdc8be1562ec3d3a2cbf1ab9181'},
+        \ {'nlines': 12, 'lnum_fin': 26, 'filename': 'README.md', 'index': 5, 'lnum_ori': 26,
+        \ 'revision': '7e8e32981b000aca30afbf60fd73e9998b56461c'},
+        \ {'index': 6, 'lnum_fin': 38, 'filename': 'README.md', 'nlinms': 3, 'lnum_ori': 38,
+        \ 'revision': 'a846a90a70de75d568deb5d16691e849528607cf'},
+        \ {'nlines': 6, 'lnum_fin': 41, 'filename': 'README.md', 'index': 7, 'lnum_ori': 38,
+        \ 'revision': '7e8e32981b000aca30afbf60fd73e9998b56461c'},
+        \ {'nlines': 1, 'lnum_fin': 47, 'filename': 'README.md', 'index': 8, 'lnum_ori': 47,
+        \ 'revision': 'a846a90a70de75d568deb5d16691e849528607cf'},
+        \ {'nlines': 13, 'lnum_fin': 48, 'filename': 'README.md', 'index': 9, 'lnum_ori': 45,
+        \ 'revision': '7e8e32981b000aca30afbf60fd73e9998b56461c'},
+        \ {'nlines': 1, 'lnum_fin': 61, 'filename': 'README.md', 'index': 10, 'lnum_ori': 61,
+        \ 'revision': 'a846a90a70de75d568deb5d16691e849528607cf'},
+        \ {'nlines': 2, 'lnum_fin': 62, 'filename': 'README.md', 'index': 11, 'lnum_ori': 58,
+        \ 'revision': '7e8e32981b000aca30afbf60fd73e9998b56461c'},
+        \ {'index': 12, 'lnum_fin': 64, 'filename': 'README.md', 'nlinms': 2, 'lnum_ori': 60,
+        \ 'revision': '8433841a517877d19c02da3ee38d1f81d910b86c'},
+        \ {'nlines': 12, 'lnum_fin': 66, 'filename': 'README.md', 'index': 13, 'lnum_ori': 62,
+        \ 'revision': '8a194fb2cde0ffdc8be1562ec3d3a2cbf1ab9181'},
+        \ {'nlines': 6, 'lnum_fin': 78, 'filename': 'README.md', 'index': 14, 'lnum_ori': 78,
+        \ 'revision': 'a846a90a70de75d568deb5d16691e849528607cf'},
+        \ {'nlines': 19, 'lnum_fin': 84, 'filename': 'README.md', 'index': 15, 'lnum_ori': 63,
+        \ 'revision': '7e8e32981b000aca30afbf60fd73e9998b56461c'},
+        \])
+  End
+End

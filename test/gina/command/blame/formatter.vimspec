@@ -1,0 +1,18 @@
+Describe gina#command#blame#formatter
+  Before all
+    let Path = vital#gina#import('System.Filepath')
+    let Blame = readfile(Path.realpath('test/_static/blame.txt'))
+    let Content = readfile(Path.realpath('test/_static/content.txt'))
+  End
+
+  It formats chunks
+    let parser = gina#command#blame#parser#new()
+    for record in Blame
+      call parser.parse_record(record)
+    endfor
+    call parser.finalize()
+
+    let formatter = gina#command#blame#formatter#new(30, Content, parser.revisions)
+    call themis#log(formatter.format(parser.chunks[0]))
+  End
+End
